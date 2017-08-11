@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t8f-gc-ngE">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="4Rr-0w-2uk">
+            <objects>
+                <navigationController id="t8f-gc-ngE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O5X-Ht-amk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7oY-Fb-HNj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IS8-A0-YiQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1543" y="112"/>
+        </scene>
+        <!--AVPlayer Meter-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hjX-Fb-If4">
+                                <rect key="frame" x="66" y="329.5" width="243" height="8"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="8" id="z2x-AP-1Us"/>
+                                </constraints>
+                            </progressView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysh-0z-Jkn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="PqL-Fv-rAv"/>
+                                </items>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cd4-oQ-WZY">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="God-ob-YHh"/>
+                                    <barButtonItem title="Item" style="plain" id="fhO-bx-kXj">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="qW6-dr-lKm">
+                                            <rect key="frame" x="85" y="7" width="205" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="First Stream"/>
+                                                <segment title="Second Stream"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="dur-Hd-CKM"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RXo-j8-2KX"/>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVPlayer Metering(Streaming) similar to AVAudioPlayer and displays average power as progress" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sU-7d-L9Q">
+                                <rect key="frame" x="50" y="251.5" width="275" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="2hv-Mh-yk6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4sU-7d-L9Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="0op-gq-iA6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hjX-Fb-If4" secondAttribute="trailing" constant="50" id="6Ng-e6-lNm"/>
+                            <constraint firstItem="hjX-Fb-If4" firstAttribute="top" secondItem="4sU-7d-L9Q" secondAttribute="bottom" constant="8" id="9gZ-aX-xcc"/>
+                            <constraint firstItem="Cd4-oQ-WZY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ICQ-gT-9hV"/>
+                            <constraint firstItem="hjX-Fb-If4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LJ0-j7-Ew3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Cd4-oQ-WZY" secondAttribute="bottom" id="P8x-Ob-7nu"/>
+                            <constraint firstItem="ysh-0z-Jkn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="U7b-oM-Of4"/>
+                            <constraint firstAttribute="trailing" secondItem="Cd4-oQ-WZY" secondAttribute="trailing" id="XxJ-d6-DPI"/>
+                            <constraint firstAttribute="trailing" secondItem="4sU-7d-L9Q" secondAttribute="trailing" constant="50" id="fSQ-RA-MeU"/>
+                            <constraint firstItem="ysh-0z-Jkn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="h1f-7O-fX7"/>
+                            <constraint firstAttribute="trailing" secondItem="ysh-0z-Jkn" secondAttribute="trailing" id="oDS-L4-pvl"/>
+                            <constraint firstItem="hjX-Fb-If4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="wjQ-pU-kbw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="AVPlayer Meter" id="pTq-WY-bTs">
+                        <barButtonItem key="leftBarButtonItem" title="Stop" id="HzI-BO-vKL">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="stopTapped:" destination="BYZ-38-t0r" id="c5r-T2-oB8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Play" id="atc-sV-n8d">
+                            <connections>
+                                <action selector="playTapped:" destination="BYZ-38-t0r" id="I6N-i7-Qcd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="progressBar" destination="hjX-Fb-If4" id="VJB-f4-pVW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-770" y="112"/>
+        </scene>
+    </scenes>
+</document>
