@@ -22,7 +22,7 @@ typedef void (^ACBAVPlayerBufferFetchedBlock) (AVAudioPCMBuffer *audioPCMBuffer,
 
 - (void)updateMeters; /* call to refresh meter values */ //does nothing for now
 
-- (float)peakPowerForChannel:(NSUInteger)channelNumber; /* returns peak power in decibels for a given channel */ //returns average power for now
+- (float)peakPowerForChannel:(NSUInteger)channelNumber; /* for peak power in decibels for a given channel. returns average power for now */
 - (float)averagePowerForChannel:(NSUInteger)channelNumber; /* returns average power in decibels for a given channel */
 
 
