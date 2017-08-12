@@ -61,6 +61,8 @@ typedef struct AVAudioTapProcessorContext {
 	float rightChannelVolume;
     float *channelVolumeList;
     float numberOfChannels;
+    AudioBufferList *bufferList;
+    AVAudioFrameCount numberOfFrames;
 	void *self;
 } AVAudioTapProcessorContext;
 
@@ -194,35 +196,47 @@ static OSStatus AU_RenderCallback(void *inRefCon, AudioUnitRenderActionFlags *io
 	}
 }
 
-
 #pragma mark -
 
-- (void)updateLeftChannelVolume:(float)leftChannelVolume rightChannelVolume:(float)rightChannelVolume {
-    // Forward left and right channel volume to delegate.
-    if (self.delegate && [self.delegate respondsToSelector:@selector(audioTabProcessor:hasNewLeftChannelValue:rightChannelValue:)]) {
-        [self.delegate audioTabProcessor:self hasNewLeftChannelValue:leftChannelVolume rightChannelValue:rightChannelVolume];
-    }
+- (void)updateLeftChannelVolume:(float)leftChannelVolume rightChannelVolume:(float)rightChannelVolume
+{
+	@autoreleasepool
+	{
+		dispatch_async(dispatch_get_main_queue(), ^{
+			// Forward left and right channel volume to delegate.
+			if (self.delegate && [self.delegate respondsToSelector:@selector(audioTabProcessor:hasNewLeftChannelValue:rightChannelValue:)])
+				[self.delegate audioTabProcessor:self hasNewLeftChannelValue:leftChannelVolume rightChannelValue:rightChannelVolume];
+		});
+	}
 }
 
 
 - (void)updateChannelVolumeList:(float *)channelVolumeList withChannelVolumeListCount:(UInt32)iCount {
-    NSMutableArray *aVolumeList = [NSMutableArray array];
-    for (int i = 0; i < iCount; i++) {
-        [aVolumeList addObject:[NSNumber numberWithFloat:channelVolumeList[i]]];
-    }
-    
-    if (self.numberOfChannels != iCount) {
-        self.numberOfChannels = (int)iCount;
-    }
-    
-    // Forward left and right channel volume to delegate.
-    if (self.delegate && [self.delegate respondsToSelector:@selector(audioTabProcessor:hasNewChannelVolumeList:)]) {
-        [self.delegate audioTabProcessor:self hasNewChannelVolumeList:aVolumeList];
+    @autoreleasepool
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSMutableArray *aVolumeList = [NSMutableArray array];
+            for (int i = 0; i < iCount; i++) {
+                [aVolumeList addObject:[NSNumber numberWithFloat:channelVolumeList[i]]];
+            }
+            
+            if (self.numberOfChannels != iCount) {
+                self.numberOfChannels = (int)iCount;
+            }
+            
+            // Forward left and right channel volume to delegate.
+            if (self.delegate && [self.delegate respondsToSelector:@selector(audioTabProcessor:hasNewChannelVolumeList:)]) {
+                [self.delegate audioTabProcessor:self hasNewChannelVolumeList:aVolumeList];
+            }
+        });
     }
 }
 
 
-- (void)updateWithAudioBuffer:(AudioBufferList *)list capacity:(AVAudioFrameCount)capacity {
+- (void)updateWithAudioBuffer:(NSValue *)bufferList capacity:(AVAudioFrameCount)capacity {
+    AudioBufferList *list = bufferList.pointerValue;
+    
     AudioBuffer *pBuffer = &list->mBuffers[0];
     AVAudioPCMBuffer *outBuffer = [[AVAudioPCMBuffer alloc] initWithPCMFormat:self.format frameCapacity:capacity];
     outBuffer.frameLength = pBuffer->mDataByteSize / sizeof(float);
@@ -254,6 +268,8 @@ static void tap_InitCallback(MTAudioProcessingTapRef tap, void *clientInfo, void
 	context->rightChannelVolume = 0.0f;
     context->channelVolumeList = NULL;
     context->numberOfChannels = 0.0f;
+    context->bufferList = NULL;
+    context->numberOfFrames = 0;
 	context->self = clientInfo;
 	
 	*tapStorageOut = context;
@@ -442,6 +458,11 @@ static void tap_ProcessCallback(MTAudioProcessingTapRef tap, CMItemCount numberF
         }
     }
     
+    context->bufferList = bufferListInOut;
+    context->numberOfFrames = (AVAudioFrameCount)numberFrames;
+    
+    NSValue *audioBufferList = [NSValue valueWithBytes:&bufferListInOut objCType:@encode(AudioBufferList *)];
+    
 	// Calculate root mean square (RMS) for left and right audio channel.
 	for (UInt32 i = 0; i < bufferListInOut->mNumberBuffers; i++)
 	{
@@ -475,7 +496,7 @@ static void tap_ProcessCallback(MTAudioProcessingTapRef tap, CMItemCount numberF
 	// Pass calculated left and right channel volume to VU meters.
 	[self updateLeftChannelVolume:context->leftChannelVolume rightChannelVolume:context->rightChannelVolume];
     [self updateChannelVolumeList:context->channelVolumeList withChannelVolumeListCount:aCount];
-    [self updateWithAudioBuffer:bufferListInOut capacity:(AVAudioFrameCount)numberFrames];
+    [self updateWithAudioBuffer:audioBufferList capacity:(AVAudioFrameCount)numberFrames];
 }
 
 #pragma mark - Audio Unit Callbacks
