@@ -75,6 +75,7 @@
 
 
 - (IBAction)playTapped:(id)sender {
+    [self.player seekToTime:kCMTimeZero];
     [self.player play];
 }
 
