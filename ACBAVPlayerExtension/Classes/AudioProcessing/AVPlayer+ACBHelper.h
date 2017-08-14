@@ -17,6 +17,10 @@ typedef void (^ACBAVPlayerBufferFetchedBlock) (AVAudioPCMBuffer *audioPCMBuffer,
 
 @property (nonatomic, readonly, assign) int numberOfChannels;
 
+//stop video
+- (void)stop;
+
+
 /* metering */
 @property (nonatomic, getter=isMeteringEnabled) BOOL meteringEnabled; /* turns level metering on or off. default is off. */
 
@@ -36,5 +40,6 @@ typedef void (^ACBAVPlayerBufferFetchedBlock) (AVAudioPCMBuffer *audioPCMBuffer,
 
 //fetch AVAudioPCMBuffer. it has useful methods to manipuate buffers or to display a visualizer
 - (void)audioPCMBufferFetchedWithCallbackBlock:(ACBAVPlayerBufferFetchedBlock)iAudioBufferFetchedBlock;
+
 
 @end

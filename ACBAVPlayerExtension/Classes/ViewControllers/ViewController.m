@@ -35,16 +35,27 @@
 }
 
 
+- (void)itemDidFinishPlaying:(NSNotification *)notification {
+    [self.player pause];
+    [self.player seekToTime:kCMTimeZero];
+}
+
+
 - (void)setupPlayer {
     NSURL *audioURL = [NSURL URLWithString:self.url];
     
     if (self.player) {
-        [self.player pause];
+        [self.player stop];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
         self.player = nil;
     }
     
     self.player = [[AVPlayer alloc] initWithURL:audioURL];
     self.player.meteringEnabled = true;
+    
+    // Subscribe to the AVPlayerItem's DidPlayToEndTime notification.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
+
     
     [self.player averagePowerListInLinearFormWithCallbackBlock:^(NSArray *iAvgPowerList, BOOL iSuccess) {
         if (iAvgPowerList.count > 0) {
@@ -75,12 +86,18 @@
 
 
 - (IBAction)playTapped:(id)sender {
-    [self.player seekToTime:kCMTimeZero];
     [self.player play];
 }
 
 
 - (IBAction)stopTapped:(id)sender {
+    [self.player stop];
+    [self setupPlayer];
+    [self.progressBar performSelector:@selector(setProgress:) withObject:@(0.0) afterDelay:0.2f];
+}
+
+
+- (IBAction)pauseTapped:(id)sender {
     [self.player pause];
 }
 
@@ -91,9 +108,11 @@
     if (segment.selectedSegmentIndex == 0 && self.url != self.firstUrl) {
         self.url = self.firstUrl;
         [self setupPlayer];
+        [self.progressBar performSelector:@selector(setProgress:) withObject:@(0.0) afterDelay:0.2f];
     } else if (segment.selectedSegmentIndex == 1 && self.url != self.secondUrl) {
         self.url = self.secondUrl;
         [self setupPlayer];
+        [self.progressBar performSelector:@selector(setProgress:) withObject:@(0.0) afterDelay:0.2f];
     }
 }
 

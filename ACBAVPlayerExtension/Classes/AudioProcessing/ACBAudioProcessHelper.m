@@ -78,7 +78,6 @@ NSString *const kACBAVPlayerStatusKey = @"status";
         [self createAudioTapProcessor];
         
         if (self.audioTapProcessor) {
-            NSLog(@"audio tap processor setup");
             
             if (self.player.currentItem.status == AVPlayerStatusReadyToPlay) {
                 [self setupAudioMix];

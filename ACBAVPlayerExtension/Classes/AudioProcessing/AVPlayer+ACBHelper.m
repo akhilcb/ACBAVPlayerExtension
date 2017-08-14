@@ -36,6 +36,14 @@ NSString const *ACBAVPlayerAudioProcessHelperkey = @"ACBAVPlayerAudioProcessHelp
 
 @implementation AVPlayer(ACBHelper)
 
+
+- (void)stop {
+    [self seekToTime:kCMTimeZero];
+    [self pause];
+    [self replaceCurrentItemWithPlayerItem:nil];
+}
+
+
 - (ACBAudioProcessHelper *)createAudioProcessHelper {
     if (!self.audioProcessHelper) {
         self.audioProcessHelper = [[ACBAudioProcessHelper alloc] init];
@@ -135,5 +143,6 @@ NSString const *ACBAVPlayerAudioProcessHelperkey = @"ACBAVPlayerAudioProcessHelp
     
     return [self averagePowerForChannel:channelNumber];
 }
+
 
 @end
