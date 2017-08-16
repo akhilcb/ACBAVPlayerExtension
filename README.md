@@ -1,5 +1,5 @@
 # ACBAVPlayerExtension
-An `AVPlayer` extension which acts similar to an `AVAudioPlayer` but with streaming support. Useful methods are added to get audio visualization from `AVPlayer` streaming. This extension adds some missing features to `AVPlayer`. 
+An extension on `AVPlayer` which converts it to have all useful features of `AVAudioPlayer` but with streaming support. Also added additional methods to support Audio visualization from `AVPlayer` streaming. This extension adds some missing features to `AVPlayer`. 
 
 This projects shows a simple example on how to use it. ViewController has a `UIProgressView` which displays `averagePower` as a volume meter while streaming an audio through `AVPlayer`. This is very similar to how we would normally use `AVAudioPlayer`, but with some additional methods which makes it easy to display the `averagePower`. `audioPCMBufferFetchedWithCallbackBlock` can be used to fetch `AVAudioPCMBuffer` which can be used for Audio Visualization. Added `stop` method to stop player.
 
