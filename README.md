@@ -67,3 +67,10 @@ ___Note: This is a beta version. There could be some issues(Hopefully minor). Us
 </div>
 </kbd>
 
+## License
+
+MIT License
+
+Copyright (c) 2017, Akhil C Balan(https://github.com/akhilcb)
+
+All rights reserved.
