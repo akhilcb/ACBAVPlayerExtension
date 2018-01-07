@@ -40,7 +40,9 @@ NSString *const kACBAVPlayerStatusKey = @"status";
     
     if (!self.audioTapProcessor) {
         AVAssetTrack *firstAudioAssetTrack;
-        
+        NSArray *audioTracks = [self.player.currentItem.asset tracksWithMediaType:AVMediaTypeAudio];
+        NSLog(@"audioTracks = %@", audioTracks);
+
         for (AVAssetTrack *assetTrack in self.player.currentItem.asset.tracks) {
             if ([assetTrack.mediaType isEqualToString:AVMediaTypeAudio]) {
                 firstAudioAssetTrack = assetTrack;
