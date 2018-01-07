@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0830"
+   LastUpgradeVersion = "0920"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E99BE14A1F3D7D09005EF6B1"
-               BuildableName = "ACBAVPlayerExtension.app"
-               BlueprintName = "ACBAVPlayerExtension"
+               BlueprintIdentifier = "E950DDB2200211B3002F56AE"
+               BuildableName = "ACBAVPlayer.framework"
+               BlueprintName = "ACBAVPlayer"
                ReferencedContainer = "container:ACBAVPlayerExtension.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,26 +29,7 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E950DDBA200211B3002F56AE"
-               BuildableName = "ACBAVPlayerTests.xctest"
-               BlueprintName = "ACBAVPlayerTests"
-               ReferencedContainer = "container:ACBAVPlayerExtension.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E99BE14A1F3D7D09005EF6B1"
-            BuildableName = "ACBAVPlayerExtension.app"
-            BlueprintName = "ACBAVPlayerExtension"
-            ReferencedContainer = "container:ACBAVPlayerExtension.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -63,23 +44,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E99BE14A1F3D7D09005EF6B1"
-            BuildableName = "ACBAVPlayerExtension.app"
-            BlueprintName = "ACBAVPlayerExtension"
+            BlueprintIdentifier = "E950DDB2200211B3002F56AE"
+            BuildableName = "ACBAVPlayer.framework"
+            BlueprintName = "ACBAVPlayer"
             ReferencedContainer = "container:ACBAVPlayerExtension.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -89,16 +62,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E99BE14A1F3D7D09005EF6B1"
-            BuildableName = "ACBAVPlayerExtension.app"
-            BlueprintName = "ACBAVPlayerExtension"
+            BlueprintIdentifier = "E950DDB2200211B3002F56AE"
+            BuildableName = "ACBAVPlayer.framework"
+            BlueprintName = "ACBAVPlayer"
             ReferencedContainer = "container:ACBAVPlayerExtension.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

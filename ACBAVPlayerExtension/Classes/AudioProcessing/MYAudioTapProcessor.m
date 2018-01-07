@@ -121,7 +121,7 @@ static OSStatus AU_RenderCallback(void *inRefCon, AudioUnitRenderActionFlags *io
 				MTAudioProcessingTapCallbacks callbacks;
 				
 				callbacks.version = kMTAudioProcessingTapCallbacksVersion_0;
-				callbacks.clientInfo = (__bridge void *)self,
+                callbacks.clientInfo = (__bridge void *)self;
 				callbacks.init = tap_InitCallback;
 				callbacks.finalize = tap_FinalizeCallback;
 				callbacks.prepare = tap_PrepareCallback;
