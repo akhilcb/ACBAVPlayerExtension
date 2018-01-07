@@ -1,7 +1,7 @@
 # ACBAVPlayerExtension
-An `AVPlayer` extension which acts similar to an `AVAudioPlayer` but with streaming support. Useful methods are added to get audio visualization from `AVPlayer` streaming. This extension adds some missing features to `AVPlayer`. 
+An extension on `AVPlayer` which converts it to have all useful features of `AVAudioPlayer` but with streaming support. Also added additional methods to support Audio visualization from `AVPlayer` streaming. This extension adds some missing features to `AVPlayer`. 
 
-This projects shows a simple example on how to use it. ViewController has a `UIProgressView` which displays `averagePower` as a volume meter while streaming an audio through `AVPlayer`. This is very similar to how we would normally use `AVAudioPlayer`, but with some additional methods which makes it easy to display the `averagePower`. `audioPCMBufferFetchedWithCallbackBlock` can be used to fetch `AVAudioPCMBuffer` which can be used for Audio Visualization.
+This projects shows a simple example on how to use it. ViewController has a `UIProgressView` which displays `averagePower` as a volume meter while streaming an audio through `AVPlayer`. This is very similar to how we would normally use `AVAudioPlayer`, but with some additional methods which makes it easy to display the `averagePower`. `audioPCMBufferFetchedWithCallbackBlock` can be used to fetch `AVAudioPCMBuffer` which can be used for Audio Visualization. Added `stop` method to stop player.
 
 
 ## Demo
@@ -19,6 +19,9 @@ This projects shows a simple example on how to use it. ViewController has a `UIP
 
 ```
     @property (nonatomic, readonly, assign) int numberOfChannels;
+    //stop video
+    - (void)stop;
+    
     /* metering */
     @property (nonatomic, getter=isMeteringEnabled) BOOL meteringEnabled; /* turns level metering on or off. default is off. */
 
@@ -64,3 +67,10 @@ ___Note: This is a beta version. There could be some issues(Hopefully minor). Us
 </div>
 </kbd>
 
+## License
+
+MIT License
+
+Copyright (c) 2017, Akhil C Balan(https://github.com/akhilcb)
+
+All rights reserved.
