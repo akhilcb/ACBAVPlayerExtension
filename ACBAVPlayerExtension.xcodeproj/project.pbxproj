@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E912446B2002FFCE00DC8139 /* MYAudioTapProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = E99BE1721F3D7DBC005EF6B1 /* MYAudioTapProcessor.m */; };
 		E950DDBC200211B3002F56AE /* ACBAVPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E950DDB3200211B3002F56AE /* ACBAVPlayer.framework */; };
 		E950DDC3200211B3002F56AE /* ACBAVPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E950DDC2200211B3002F56AE /* ACBAVPlayerTests.swift */; };
 		E950DDC5200211B3002F56AE /* ACBAVPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E950DDB5200211B3002F56AE /* ACBAVPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -14,10 +15,9 @@
 		E950DDCA200211B3002F56AE /* ACBAVPlayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E950DDB3200211B3002F56AE /* ACBAVPlayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E950DDD1200211B7002F56AE /* AVPlayer+ACBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E99BE1701F3D7DBC005EF6B1 /* AVPlayer+ACBHelper.m */; };
 		E950DDD2200211B9002F56AE /* ACBAudioProcessHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E99BE16E1F3D7DBC005EF6B1 /* ACBAudioProcessHelper.m */; };
-		E950DDD3200211BB002F56AE /* MYAudioTapProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = E99BE1721F3D7DBC005EF6B1 /* MYAudioTapProcessor.m */; };
 		E950DDD4200211D3002F56AE /* AVPlayer+ACBHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E99BE16F1F3D7DBC005EF6B1 /* AVPlayer+ACBHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E950DDD5200211D3002F56AE /* ACBAudioProcessHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E99BE16D1F3D7DBC005EF6B1 /* ACBAudioProcessHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E950DDD6200211D3002F56AE /* MYAudioTapProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = E99BE1711F3D7DBC005EF6B1 /* MYAudioTapProcessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E950DDD5200211D3002F56AE /* ACBAudioProcessHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E99BE16D1F3D7DBC005EF6B1 /* ACBAudioProcessHelper.h */; };
+		E950DDD6200211D3002F56AE /* MYAudioTapProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = E99BE1711F3D7DBC005EF6B1 /* MYAudioTapProcessor.h */; };
 		E950DDD920021247002F56AE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E950DDD820021247002F56AE /* AVFoundation.framework */; };
 		E99BE1501F3D7D09005EF6B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E99BE14F1F3D7D09005EF6B1 /* main.m */; };
 		E99BE1791F3D7DBC005EF6B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E99BE1661F3D7DBC005EF6B1 /* Assets.xcassets */; };
@@ -409,8 +409,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E912446B2002FFCE00DC8139 /* MYAudioTapProcessor.m in Sources */,
 				E950DDD1200211B7002F56AE /* AVPlayer+ACBHelper.m in Sources */,
-				E950DDD3200211BB002F56AE /* MYAudioTapProcessor.m in Sources */,
 				E950DDD2200211B9002F56AE /* ACBAudioProcessHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

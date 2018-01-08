@@ -14,10 +14,6 @@ FOUNDATION_EXPORT double ACBAVPlayerVersionNumber;
 //! Project version string for ACBAVPlayer.
 FOUNDATION_EXPORT const unsigned char ACBAVPlayerVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <ACBAVPlayer/PublicHeader.h>
-
 
 #import <ACBAVPlayer/AVPlayer+ACBHelper.h>
-#import <ACBAVPlayer/ACBAudioProcessHelper.h>
-#import <ACBAVPlayer/MYAudioTapProcessor.h>
 
