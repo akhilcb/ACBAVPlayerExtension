@@ -15,6 +15,24 @@ This projects shows a simple example on how to use it. ViewController has a `UIP
 <div><br></div>
 
 
+## Setup
+
+Carthage or Cocoapods can be used to integrate this to a project. 
+
+### Carthage
+
+```
+github "akhilcb/ACBAVPlayerExtension" ~> 2.0
+
+```
+
+### Cocoapods
+
+```
+pod 'ACBAVPlayer'
+
+```
+
 ## AVPlayer Extension Interface
 
 ```
