@@ -264,7 +264,6 @@
 				E950DDAF200211B3002F56AE /* Frameworks */,
 				E950DDB0200211B3002F56AE /* Headers */,
 				E950DDB1200211B3002F56AE /* Resources */,
-				E910596A2002BBEE00718A25 /* Make Universal Script */,
 			);
 			buildRules = (
 			);
@@ -386,23 +385,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		E910596A2002BBEE00718A25 /* Make Universal Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Make Universal Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ \"true\" == ${ALREADYINVOKED:-false} ]\nthen\necho \"Recursion detected, stopping\"\nelse\nexport ALREADYINVOKED=\"true\"\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nTARGET_NAME=${PROJECT_NAME}\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\nrm -rf \"${PROJECT_DIR}/ACBAVPlayer.framework\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${TARGET_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${TARGET_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/ACBAVPlayer.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/ACBAVPlayer.framework/Modules/ACBAVPlayer.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\necho \"Modules dir present\"\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/ACBAVPlayer.framework/Modules/ACBAVPlayer.swiftmodule\"\nelse\necho \"Modules dir not present\"\nfi\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/ACBAVPlayer.framework/ACBAVPlayer\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/ACBAVPlayer.framework/ACBAVPlayer\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/ACBAVPlayer.framework/ACBAVPlayer\"\n\nfi";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E950DDAE200211B3002F56AE /* Sources */ = {
