@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.author    	 = "Akhil"
   s.platform     = :ios
   s.source       = { :git => "https://github.com/akhilcb/ACBAVPlayerExtension.git", :tag => "2.0" }
-  s.source_files  = "ACBAVPlayerExtension", "ACBAVPlayerExtension/Classes/AudioProcessing/*.h"
+  s.source_files  = "ACBAVPlayerExtension", "ACBAVPlayerExtension/Classes/AudioProcessing/*.{h,m}"
   s.exclude_files = "ACBAVPlayerExtension/main.m"
   s.public_header_files = "ACBAVPlayer/ACBPlayer.h"
 end
