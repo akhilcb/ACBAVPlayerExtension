@@ -27,7 +27,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.progressBar.progress = 0.0;
-    self.firstUrl = @"http://content.viki.com/test_ios/ios_240.m3u8";//@"https://scontent.cdninstagram.com/hphotos-xfa1/t50.2886-16/11719145_918467924880620_816495633_n.mp4";
+    self.firstUrl = @"https://archive.org/download/WildlifeSampleVideo/Wildlife.mp4";
+    // @"http://content.viki.com/test_ios/ios_240.m3u8";
+    //@"https://scontent.cdninstagram.com/hphotos-xfa1/t50.2886-16/11719145_918467924880620_816495633_n.mp4";
     self.secondUrl = @"http://techslides.com/demos/sample-videos/small.mp4";
 
     self.url = self.firstUrl;
