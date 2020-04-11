@@ -73,6 +73,16 @@ NSString const *ACBAVPlayerAudioProcessHelperkey = @"ACBAVPlayerAudioProcessHelp
 }
 
 
+- (void)replaceCurrentItemAndUpdateMeteringForPlayerItem:(nullable AVPlayerItem *)item {
+    BOOL prevMetering = self.isMeteringEnabled;
+    if (prevMetering) {
+        self.meteringEnabled = false;
+    }
+    [self replaceCurrentItemWithPlayerItem:item];
+    self.meteringEnabled = prevMetering;
+}
+
+
 - (float)averagePowerForChannel:(NSUInteger)channelNumber {
     
     if (!self.audioProcessHelper) {

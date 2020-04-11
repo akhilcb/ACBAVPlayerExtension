@@ -59,6 +59,7 @@ pod 'ACBAVPlayer'
     - (void)averagePowerListInLinearFormWithCallbackBlock:(ACBAVPlayerMeteringBlock)iMeteringCallbackBlock;
     //fetch AVAudioPCMBuffer. it has useful methods to manipuate buffers or to display a visualizer
     - (void)audioPCMBufferFetchedWithCallbackBlock:(ACBAVPlayerBufferFetchedBlock)iAudioBufferFetchedBlock;
+    - (void)replaceCurrentItemAndUpdateMeteringForPlayerItem:(AVPlayerItem *)item; //use this instead of "replaceCurrentItemWithPlayerItem" for metering to work.
 ```
 
 ___Note: This is a beta version. There could be some issues(Hopefully minor). Use at your own risk.___

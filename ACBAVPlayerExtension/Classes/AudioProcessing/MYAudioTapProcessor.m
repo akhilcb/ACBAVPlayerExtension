@@ -451,6 +451,10 @@ static void tap_ProcessCallback(MTAudioProcessingTapRef tap, CMItemCount numberF
     context->numberOfChannels = (float)aCount;
     
     if (aCount > 0) {
+        if (context->channelVolumeList) {
+            free(context->channelVolumeList);
+            context->channelVolumeList = NULL;
+        }
         context->channelVolumeList = malloc(aCount * sizeof(float));
         
         if (context->channelVolumeList == 0) {
