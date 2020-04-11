@@ -28,7 +28,7 @@ Carthage or Cocoapods can be used to integrate this to a project.
 ### Carthage
 
 ```
-github "akhilcb/ACBAVPlayerExtension" ~> 2.0
+github "akhilcb/ACBAVPlayerExtension" ~> 2.1
 
 ```
 
