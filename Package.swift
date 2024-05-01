@@ -20,7 +20,8 @@ let package = Package(
         .target(
             name: "ACBAVPlayerExtension",
             dependencies: [],
-            path: "ACBAVPlayerExtension/Classes/AudioProcessing")
+            path: "ACBAVPlayerExtension/Classes/AudioProcessing",
+            publicHeadersPath: "include")
     ],
     swiftLanguageVersions: [.v5]
 )
