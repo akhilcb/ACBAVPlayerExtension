@@ -12,7 +12,7 @@ let package = Package(
     products: [
         .library(
             name: "ACBAVPlayerExtension",
-            targets: ["ACBAVPlayerExtension"]),
+            targets: ["ACBAVPlayerExtension"])
     ],
     dependencies: [
     ],
@@ -20,7 +20,7 @@ let package = Package(
         .target(
             name: "ACBAVPlayerExtension",
             path: "ACBAVPlayerExtension/Classes/AudioProcessing",
-            dependencies: []),
+            dependencies: [])
     ],
     swiftLanguageVersions: [.v5]
 )
