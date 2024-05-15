@@ -64,11 +64,21 @@ NSString *const kACBAVPlayerStatusKey = @"status";
         [self setupMetering];
     } else if (self.isMeteringEnabled && !iMeteringEnabled) {
         self.player.currentItem.audioMix = nil;
+        [self releaseAudioTapProcessor];
     }
     
     _meteringEnabled = iMeteringEnabled;
 }
 
+- (void)releaseAudioTapProcessor {
+    
+    if (!self.audioTapProcessor) {
+        return;
+    }
+
+    [self.audioTapProcessor stopProcessing];
+    self.audioTapProcessor = nil;
+}
 
 - (void)setupMetering {
     
