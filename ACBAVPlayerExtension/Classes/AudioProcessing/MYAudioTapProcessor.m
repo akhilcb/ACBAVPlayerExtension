@@ -252,6 +252,10 @@ static OSStatus AU_RenderCallback(void *inRefCon, AudioUnitRenderActionFlags *io
     NSLog(@"AudioTapProcessor - stopProcessing");
     AVMutableAudioMixInputParameters *params = (AVMutableAudioMixInputParameters *)_audioMix.inputParameters[0];
     MTAudioProcessingTapRef audioProcessingTap = params.audioTapProcessor;
+
+    if (audioProcessingTap == NULL)
+        return;
+
     AVAudioTapProcessorContext *context = (AVAudioTapProcessorContext *)MTAudioProcessingTapGetStorage(audioProcessingTap);
 
     // nils out the pointer so that we know in tapProcessorCallbacks that self will be dealloc'ed
