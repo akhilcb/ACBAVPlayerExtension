@@ -248,6 +248,19 @@ static OSStatus AU_RenderCallback(void *inRefCon, AudioUnitRenderActionFlags *io
     [self.delegate audioTabProcessor:self didReceiveBuffer:outBuffer];
 }
 
+- (void)stopProcessing {
+    NSLog(@"AudioTapProcessor - stopProcessing");
+    AVMutableAudioMixInputParameters *params = (AVMutableAudioMixInputParameters *)_audioMix.inputParameters[0];
+    MTAudioProcessingTapRef audioProcessingTap = params.audioTapProcessor;
+
+    if (audioProcessingTap == NULL)
+        return;
+
+    AVAudioTapProcessorContext *context = (AVAudioTapProcessorContext *)MTAudioProcessingTapGetStorage(audioProcessingTap);
+
+    // nils out the pointer so that we know in tapProcessorCallbacks that self will be dealloc'ed
+    context->self = NULL;
+}
 
 @end
 
@@ -410,7 +423,12 @@ static void tap_ProcessCallback(MTAudioProcessingTapRef tap, CMItemCount numberF
 	}
 	
 	MYAudioTapProcessor *self = ((__bridge MYAudioTapProcessor *)context->self);
-	
+    
+    if (!self) {
+        NSLog(@"AudioTapProcessor - processCallback CANCELLED (self is nil)");
+        return;
+    }
+
 	if (self.isBandpassFilterEnabled)
 	{
 		// Apply bandpass filter Audio Unit.

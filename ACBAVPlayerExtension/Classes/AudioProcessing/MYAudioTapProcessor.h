@@ -68,6 +68,8 @@
 @property (nonatomic) float bandwidth; // [0 .. 1]
 @property (nonatomic, assign) int numberOfChannels;
 
+- (void)stopProcessing;
+
 @end
 
 #pragma mark - Protocols
