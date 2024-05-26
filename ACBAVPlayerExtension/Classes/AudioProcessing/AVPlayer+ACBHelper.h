@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
-typedef void (^ACBAVPlayerMeteringBlock) (NSArray *iAvgPowerList, BOOL iSuccess);
-typedef void (^ACBAVPlayerBufferFetchedBlock) (AVAudioPCMBuffer *audioPCMBuffer, BOOL iSuccess);
+typedef void (^ACBAVPlayerMeteringBlock) (NSArray * _Nullable iAvgPowerList, BOOL iSuccess);
+typedef void (^ACBAVPlayerBufferFetchedBlock) (AVAudioPCMBuffer * _Nullable audioPCMBuffer, BOOL iSuccess);
 
 
 @interface AVPlayer(ACBHelper)
@@ -31,15 +31,15 @@ typedef void (^ACBAVPlayerBufferFetchedBlock) (AVAudioPCMBuffer *audioPCMBuffer,
 
 
 //use this to repeatedly fetch average power list(in decibels) for all channels in iMeteringCallbackBlock. This block will be executed each time a value is fetched. Index of array is channel number
-- (void)averagePowerListWithCallbackBlock:(ACBAVPlayerMeteringBlock)iMeteringCallbackBlock;
+- (void)averagePowerListWithCallbackBlock:(ACBAVPlayerMeteringBlock _Nullable )iMeteringCallbackBlock;
 
 - (float)averagePowerInLinearFormForChannel:(NSUInteger)channelNumber; //returns in average power in linear form. Value is in between 0 to 1.
 
 //fetch average power list in linear form(values in between 0 and 1)
-- (void)averagePowerListInLinearFormWithCallbackBlock:(ACBAVPlayerMeteringBlock)iMeteringCallbackBlock;
+- (void)averagePowerListInLinearFormWithCallbackBlock:(ACBAVPlayerMeteringBlock _Nullable )iMeteringCallbackBlock;
 
 //fetch AVAudioPCMBuffer. it has useful methods to manipuate buffers or to display a visualizer
-- (void)audioPCMBufferFetchedWithCallbackBlock:(ACBAVPlayerBufferFetchedBlock)iAudioBufferFetchedBlock;
+- (void)audioPCMBufferFetchedWithCallbackBlock:(ACBAVPlayerBufferFetchedBlock _Nullable )iAudioBufferFetchedBlock;
 
 //use this instead of "replaceCurrentItemWithPlayerItem" for metering to work.
 - (void)replaceCurrentItemAndUpdateMeteringForPlayerItem:(nullable AVPlayerItem *)item;
